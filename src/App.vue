@@ -1,22 +1,65 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <section class="row">
+      <div class="small-6 columns">
+        <h1 class="text-center">YOU</h1>
+        <div class="healthbar">
+          <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+            {{ playerHealth }}
+          </div>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <h1 class="text-center">MONSTER</h1>
+        <div class="healthbar">
+          <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
+            {{ monsterHealth }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="row controls">
+      <div class="small-12 columns">
+        <button id="start-game">START NEW GAME</button>
+      </div>
+    </section>
+    <section class="row controls">
+      <div class="small-12 columns">
+        <button id="attack">ATTACK</button>
+        <button id="special-attack">SPECIAL ATTACK</button>
+        <button id="heal">HEAL</button>
+        <button id="give-up">GIVE UP</button>
+      </div>
+    </section>
+    <section class="row log">
+      <div class="small-12 columns">
+        <ul>
+          <li>
+
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      playerHealth: 100,
+      monsterHealth: 100
+    }
   }
 }
 </script>
 
 <style lang="scss">
+@import "~foundation-sites/scss/foundation.scss";
+
+@include foundation-button;
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
