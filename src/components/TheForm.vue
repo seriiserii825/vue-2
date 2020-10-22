@@ -1,9 +1,12 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{invalid: userNameValid === 'invalid'}">
+    <div class="form-control" :class="{
+      invalid: userValid === 'invalid',
+      valid: userValid === 'valid'
+    }">
       <label for="user-name">Your Name</label>
       <input id="user-name" name="user-name" type="text" v-model.trim="userName" @blur="validateUserName"/>
-      <p v-if="userNameValid === 'invalid'">Please enter your name</p>
+      <p v-if="userValid === 'invalid'">Please enter your name</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -47,13 +50,19 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <rating-control v-model="rating"></rating-control>
     <div>
       <button>Save Data</button>
     </div>
   </form>
 </template>
 <script>
+import RatingControl from '@/components/RatingControl'
+
 export default {
+  components: {
+    RatingControl
+  },
   data () {
     return {
       userName: '',
@@ -61,23 +70,21 @@ export default {
       referrer: 'wom',
       interest: ['news'],
       how: 'blogs',
-      userNameValid: 'pending'
+      userValid: 'pending',
+      rating: null
     }
   },
   methods: {
     submitForm () {
-      console.log('Checkbox: ' + this.interest)
-      console.log('How: ' + this.how)
-      this.interest = []
-      this.how = ''
+      console.log(this.rating)
+      this.rating = null
     },
     validateUserName () {
       if (this.userName === '') {
-        this.userNameValid = 'invalid'
+        this.userValid = 'invalid'
       } else {
-        this.userNameValid = 'valid'
+        this.userValid = 'valid'
       }
-      console.log(this.userNameValid)
     }
   }
 }
@@ -92,24 +99,40 @@ form {
   padding: 2rem;
   background-color: #fff;
 }
+
 .form-control {
   margin: 0.5rem 0;
-}
-.form-control.invalid {
-  input {
-    border-color: red;
+
+  &.invalid {
+    input {
+      border-color: red;
+    }
+
+    label {
+      color: red;
+    }
   }
-  label {
-    color: red;
+
+  &.valid {
+    input {
+      border-color: green;
+    }
+
+    label {
+      color: green;
+    }
   }
 }
+
 label {
   font-weight: bold;
 }
+
 h2 {
   font-size: 1rem;
   margin: 0.5rem 0;
 }
+
 input,
 select {
   display: block;
@@ -117,19 +140,23 @@ select {
   font: inherit;
   margin-top: 0.5rem;
 }
+
 select {
   width: auto;
 }
+
 input[type='checkbox'],
 input[type='radio'] {
   display: inline-block;
   width: auto;
   margin-right: 1rem;
 }
+
 input[type='checkbox'] + label,
 input[type='radio'] + label {
   font-weight: normal;
 }
+
 button {
   font: inherit;
   border: 1px solid #0076bb;
@@ -139,6 +166,7 @@ button {
   padding: 0.75rem 2rem;
   border-radius: 30px;
 }
+
 button:hover,
 button:active {
   border-color: #002350;
