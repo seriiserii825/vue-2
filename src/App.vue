@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <the-form></the-form>
   </div>
 </template>
 
 <script>
-import TheForm from './components/TheForm.vue'
 
-export default {
-  components: {
-    TheForm
-  }
-}
+export default {}
 </script>
 
 <style>
@@ -23,6 +17,5 @@ html {
 }
 body {
   margin: 0;
-  background-color: #292929;
 }
 </style>
