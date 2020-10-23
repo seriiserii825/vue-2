@@ -5,7 +5,10 @@
       <div>
         <base-button @click="loadResults">Load Submitted Experiences</base-button>
       </div>
-      <ul>
+      <p v-if="isLoaded">Loading...</p>
+      <p v-else-if="!isLoaded && error">{{ error }}</p>
+      <p v-else-if="!isLoaded && results.length === 0">Start add new data throw the form, to see a result...</p>
+      <ul v-else-if="!isLoaded && results.length > 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -23,11 +26,14 @@ import SurveyResult from './SurveyResult.vue'
 export default {
   data () {
     return {
-      results: []
+      results: [],
+      isLoaded: false,
+      error: null
     }
   },
   methods: {
     loadResults () {
+      this.isLoaded = true
       fetch('https://vue-http-demo-1bb78.firebaseio.com/surveys.json')
         .then((result) => {
           if (result.ok) {
@@ -35,6 +41,7 @@ export default {
           }
         })
         .then(result => {
+          this.isLoaded = false
           const resultArr = []
 
           for (const elem in result) {
@@ -44,13 +51,20 @@ export default {
               rating: result[elem].rating
             })
           }
-
           this.results = resultArr
+        })
+        .catch(() => {
+          this.isLoaded = false
+          this.error = 'Try to fetch data later'
         })
     }
   },
   components: {
     SurveyResult
+  },
+  mounted () {
+    console.log(this.isLoaded)
+    this.loadResults()
   }
 }
 </script>
