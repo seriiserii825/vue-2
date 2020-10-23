@@ -16,7 +16,7 @@ export default {
   components: {
     TheNavigation,
     TeamsList,
-    UsersList,
+    UsersList
   },
   data () {
     return {
@@ -36,7 +36,7 @@ export default {
           id: 't3',
           name: 'Client Consulting',
           members: ['u4', 'u5']
-        },
+        }
       ],
       users: [
         {
@@ -63,21 +63,21 @@ export default {
           id: 'u5',
           fullName: 'Marie Smith',
           role: 'Consultant'
-        },
-      ],
+        }
+      ]
     }
   },
   provide () {
     return {
       teams: this.teams,
-      users: this.users,
+      users: this.users
     }
   },
   methods: {
     setActivePage (page) {
       this.activePage = page
-    },
-  },
+    }
+  }
 }
 </script>
 
