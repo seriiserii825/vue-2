@@ -52,6 +52,7 @@ export default {
             })
           }
           this.results = resultArr
+          this.error = null
         })
         .catch(() => {
           this.isLoaded = false
