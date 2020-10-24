@@ -80,5 +80,6 @@ html {
 }
 body {
   margin: 0;
+  min-height: 120vh;
 }
 </style>
