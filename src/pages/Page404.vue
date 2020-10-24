@@ -1,0 +1,3 @@
+<template>
+  <h1>404 - page doesn't exist</h1>
+</template>

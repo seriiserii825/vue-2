@@ -1,20 +1,26 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
+          <router-link tag="li" exact class="nav-item" to="/" active-class="active">
+            <a class="nav-link">Home</a>
+          </router-link>
+          <router-link tag="li" class="nav-item" to="/cars" active-class="active">
+            <a class="nav-link">Cars</a>
+          </router-link>
+          <router-link tag="li" class="nav-item" to="/car/3" active-class="active">
+            <a class="nav-link">Car 3</a>
+          </router-link>
+          <router-link tag="li" class="nav-item" to="/car/4" active-class="active">
+            <a class="nav-link">Car 4</a>
+          </router-link>
         </ul>
       </div>
     </nav>
-    <router-view></router-view>
+    <div class="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -32,5 +38,9 @@ html {
 }
 body {
   margin: 0;
+  font-size: 18px;
+}
+.main {
+  padding: 10rem;
 }
 </style>
