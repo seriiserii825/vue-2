@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-            integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
@@ -13,48 +11,7 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app">
-        <section class="row">
-            <div class="small-6 columns">
-                <h1 class="text-center">YOU</h1>
-                <div class="healthbar">
-                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
-
-                    </div>
-                </div>
-            </div>
-            <div class="small-6 columns">
-                <h1 class="text-center">MONSTER</h1>
-                <div class="healthbar">
-                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;">
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="row controls">
-            <div class="small-12 columns">
-                <button id="start-game">START NEW GAME</button>
-            </div>
-        </section>
-        <section class="row controls">
-            <div class="small-12 columns">
-                <button id="attack">ATTACK</button>
-                <button id="special-attack">SPECIAL ATTACK</button>
-                <button id="heal">HEAL</button>
-                <button id="give-up">GIVE UP</button>
-            </div>
-        </section>
-        <section class="row log">
-            <div class="small-12 columns">
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
-        </section>
-    </div>
+    <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
 </html>
