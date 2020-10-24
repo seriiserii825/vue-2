@@ -1,26 +1,20 @@
 <template>
   <div id="app">
-    <the-navigation @set-page="setActivePage"></the-navigation>
+    <the-navigation></the-navigation>
     <main>
-      <component :is="activePage"></component>
     </main>
   </div>
 </template>
 
 <script>
-import TeamsList from './components/teams/TeamsList.vue'
-import UsersList from './components/users/UsersList.vue'
 import TheNavigation from './components/nav/TheNavigation.vue'
 
 export default {
   components: {
-    TheNavigation,
-    TeamsList,
-    UsersList
+    TheNavigation
   },
   data () {
     return {
-      activePage: 'teams-list',
       teams: [
         {
           id: 't1',
@@ -65,17 +59,6 @@ export default {
           role: 'Consultant'
         }
       ]
-    }
-  },
-  provide () {
-    return {
-      teams: this.teams,
-      users: this.users
-    }
-  },
-  methods: {
-    setActivePage (page) {
-      this.activePage = page
     }
   }
 }
