@@ -10,6 +10,17 @@ Vue.config.productionTip = false
 
 Vue.component('base-link', BaseLink)
 
+// router.beforeEach((to, from, next) => {
+// console.log('global beforeEach')
+// console.log(to, from)
+// if (to.name === 'team-members') {
+//   next()
+// } else {
+//   next({ name: 'team-members' })
+// }
+//   next()
+// })
+
 new Vue({
   render: h => h(App),
   router

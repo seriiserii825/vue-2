@@ -12,7 +12,12 @@ export default new VueRouter(
       },
       {
         path: '/users',
-        component: UsersList
+        component: UsersList,
+        beforeEnter (to, from, next) {
+          console.log('user before enter')
+          console.log(to, from)
+          next()
+        }
       },
       {
         name: 'teams',
