@@ -7,16 +7,34 @@ export default new VueRouter(
   {
     routes: [
       {
+        path: '/',
+        redirect: '/teams'
+      },
+      {
         path: '/users',
         component: UsersList
       },
       {
+        name: 'teams',
         path: '/teams',
-        component: TeamsList
+        component: TeamsList,
+        children: [
+          {
+            name: 'team-members',
+            path: ':teamId',
+            component: TeamMembers,
+            props: true
+          }
+        ]
+        // alias: '/'
       },
       {
         path: '/teams/:teamId',
-        component: TeamMembers
+        component: TeamMembers,
+        props: true
+      },
+      {
+        path: '/:notFound(.*)'
       }
     ],
     mode: 'history'
