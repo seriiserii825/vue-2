@@ -12,8 +12,23 @@ const store = new Vuex.Store({
     increment (state) {
       state.counter += 1
     },
-    incrementToTen (state) {
-      state.counter += 10
+    increase (state, payload) {
+      state.counter += payload.value
+    }
+  },
+  getters: {
+    getFullCounter (state) {
+      return state.counter * 4
+    },
+    normalizedCounter (state, getters) {
+      const finalCounter = getters.getFullCounter
+      if (finalCounter < 0) {
+        return 0
+      } else if (finalCounter > 100) {
+        return 100
+      } else {
+        return finalCounter
+      }
     }
   }
 })
