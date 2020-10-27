@@ -1,17 +1,30 @@
 <template>
   <div id="app">
-    <base-container title="Vuex"></base-container>
+    <base-container title="Vuex">
+      <the-counter></the-counter>
+      <button @click="addOne">Add 1</button>
+      <change-counter></change-counter>
+    </base-container>
   </div>
 </template>
 
 <script>
-import BaseContainer from './components/BaseContainer.vue';
+import BaseContainer from './components/BaseContainer.vue'
+import TheCounter from '@/components/TheCounter'
+import ChangeCounter from '@/components/ChangeCounter'
 
 export default {
   components: {
     BaseContainer,
+    TheCounter,
+    ChangeCounter
   },
-};
+  methods: {
+    addOne () {
+      this.$store.commit('increment')
+    }
+  }
+}
 </script>
 
 <style>
@@ -23,5 +36,10 @@ html {
 }
 body {
   margin: 0;
+}
+button {
+  padding: 1rem 2rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
 </style>
