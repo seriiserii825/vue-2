@@ -16,6 +16,13 @@ const store = new Vuex.Store({
       state.counter += payload.value
     }
   },
+  actions: {
+    increment (context) {
+      setTimeout(() => {
+        context.commit('increment')
+      }, 2000)
+    }
+  },
   getters: {
     getFullCounter (state) {
       return state.counter * 4
